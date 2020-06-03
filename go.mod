@@ -4,6 +4,7 @@ go 1.14
 
 require (
 	github.com/ajstarks/svgo v0.0.0-20200320125537-f189e35d30ca // indirect
+	github.com/barucharky/go-shenanigans v0.0.0-20200603095408-d1e92aa21b9f
 	github.com/braintree/manners v0.0.0-20160418043613-82a8879fc5fd
 	github.com/google/go-cmp v0.4.0
 	github.com/google/uuid v1.1.1 // indirect
