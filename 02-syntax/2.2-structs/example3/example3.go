@@ -1,5 +1,4 @@
-// All material is licensed under the Apache License Version 2.0, January 2004
-// http://www.apache.org/licenses/LICENSE-2.0
+// B''H
 
 // Sample program to show how variables of an unnamed type can
 // be assigned to variables of a named type, when they are
