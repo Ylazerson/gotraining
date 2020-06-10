@@ -116,7 +116,15 @@ Everything in Go is **pass by value**.
 
 ---
 
-When your Go program starts up, it's gonna be given a **`P`** or a **logical processor** for every **core** that's identified on the host machine. 
+#### Behind the Scenes - Part 1 
+
+Remember
+- **G**: Goroutine
+- **P**: Logical Processor
+- **M**: OS Thread
+- **C**: Core
+
+When your Go program starts up, it's gonna be given a **`P`** or a **logical processor** for every **core** (**`C`**) that's identified on the host machine. 
 
 That **`P`** is given a _real live_ **operating system thread** that we call **`M`**.
  
@@ -126,11 +134,75 @@ We get one more thing from the run time, and that is our **goroutine**, our **`G
 
 ---
 
-#### Path of Execution
+#### Behind the Scenes - Part 2 
+
+**Path of Execution**
 
 **Threads** are our **path of execution** at the **operating system** level. 
 
-All of the code you're writing at some point gets into **machine code**, and the operating system's job is to choose a path of execution, a thread to execute those instructions one after the other, starting from `main`. That's the job of the thread. 
+All code at some point gets into **machine code**, and the operating system's job is to choose a path of execution, a thread to execute those instructions one after the other, starting from `main`. That's the job of the thread. 
+
+---
+
+There's **3** areas of memory that we may talk about throughout the class. 
+1. The Data Segment 
+    - usually reserved for global variables and read-only values
+2. Stacks
+3. Heaps 
+
+We're going focus on stacks and heaps.
+
+---
+
+#### Behind the Scenes - Part 3
+
+**Stacks**
+
+A stack is a data structure that every thread is given. 
+
+At the operating system level, your stack is a **contiguous** block of memory and usually it's allocated to be **1MG**. 
+
+**1MG** of memory for every stack, and therefore for every thread. 
+
+**`G`**s are very much like **`M`**s; we could almost say that they're the same but **`G`** above the operating system. 
+
+A **`G`** has a stack of memory; **2K** in size (a lot lot smaller than **1MG**) 
 
 
-The operating system schedules threads. But, what's important here is the data structures now. There's three areas of memory that we may talk about throughout the class. There's the data segment, there's stacks, and there are heaps. The data segment's usually reserved for your global variables, your read-only values, we don't care about that so much today. What we're gonna focus on is stacks and heaps. A stack is a data structure that every thread is given. At the operating system level, your stack is a contiguous block of memory and usually it's allocated to be one meg. One meg of memory for every stack, and therefore for every thread. If you had 10,000 threads, you can add that up. That's 10,000 megs of memory immediately being used out of the box. This concept of a stack is coming to us all the way through the hardware. The hardware wants this stuff. It really helps simplify our programming models down there, and it's really gonna help us, too, in our programming models, as we're gonna see again to understand cost and what's happening. Since an M, or an operating system thread, is a path of execution, and it has a stack, and it needs that stack in order to do its job, our G, which is our path of execution at Go's level. Gs are very much like Ms, we could almost, at this point, say that they're the same but this is above the operating system. A G has a stack of memory, too. Except in Go today, that stack is 2K in size. 2K. It was 4K for a long time. Today it's 2K. Notice how much smaller, and I mean significantly smaller, the stack is for a goroutine as it relates to an operating system. That's important, because we wanna be able to have a lot of goroutines in our program. Lots of paths of execution running. Remember, Go is focused both on integrity and minimizing the use of resources throughout the running program. This is one of those areas where we're seeing that. When our Go program starts up, we get a G. Our G is our path of execution. Its job is to execute every single instruction that we've written. The M is gonna host itself on top of the M to actually get that happening at the hardware level. What we have is this 2K stack, and this is what's important here, this is what we're gonna be talking about. By the time the goroutine that was created for this Go program wants to execute main, it's already executed a bunch of code from the run time. Eventually is says hey, I wanna execute the main function now, we're ready. This is what is going to happen. As the goroutine executes code and starts jumping between functions, this stack becomes critical to make all that happen. Eventually, the Go routine says I want to execute main, and any time a goroutine makes a function call, what it's going to do is take some memory off the stack. We call this a frame of memory. It's gonna slice a frame of memory off the stack so it can now execute the code that you see here inside of main. What I want you to understand right now is that in order to execute this data transformation, we have to be able to read and write memory. Remember, every line of code we write is either reading memory or writing memory. Obviously, also allocating at some point. It's doing those three things, and what's important here is that the goroutine only has direct access to memory. Let's think about this for a second. The goroutine only has direct access to memory for the frame that it is operating on. It wants to execute main. This is now our active frame. Here it is. The goroutine is now executing within this context, and this is, for our purposes right now, the only memory the goroutine can read and write to directly. This is it. What does that mean to us? What it means is if this data transformation has to be executed by the goroutine, and it can only operate within the scope of memory within this frame, it means all of the data that the goroutine needs to perform this data transformation has to be in here. This frame. If we look on line 10, what we see is a variable declaration of count assigned to the value of 10. We basically are now gonna be allocating our four bytes of memory right here inside this frame. It has to be inside this frame, because if it's not, the goroutine can't access it. Understand that this frame is serving a really important purpose. It's creating a sandbox, a layer of isolation. It's giving us a sense of immutability that the goroutine can only mutate or cause problems here and nowhere else in our code. This is very, very powerful constructs that we're gonna wanna leverage and it starts to allow us to talk about things like semantics. You're gonna hear me use the words mechanics and semantics. When I talk about mechanics, I'm talking about how things work. When I talk about semantics, I'm talking about how things behave. The semantics are gonna let us understand what the behavior is, the impact we're gonna have. The mechanics are gonna allow us to visualize and see how all that works. We need both. The semantics, though, are very, very important and powerful. What we're looking at so far here is that we've created a value of type Int, its value is 10, it has been allocated or created within the frame here because this is the only place the goroutine can operate in terms of memory. On line 13, we're doing two things. I wanna bring everything back to English. On line 13, what you're gonna see is that I'm asking us to display the value of count. Any time I use the variable's name I want us to think value of. What's in the box? Over here, you can see I'm using the ampersand operator. Ampersand operator isn't unique to Go. Many programming languages have used it, and it usually means the same thing. Address of, where is the box? Hey, if you got a box in memory, it's got to be somewhere. We're gonna be using hexadecimal numbers for this. We only have to worry about looking at the last four. I could pretend that this is an address F1BC. Again, we're using hexadecimal numbers, cause it's just more efficient when you have these very large numbers which are addresses. Value of, what's in the box? That's the variable and only the variable. Ampersand variable, address of, where is the box? It's gotta be located somewhere in memory. It's gonna be a memory address. There it is. I want you to look on line 16. In line 16, we're about to make another function call. I want you to think about this for a second. Every time you make a function call, what we're really doing is crossing over a program boundary. Program boundaries are important to identify, because in this case, this program boundary, this function call, means that we're gonna be moving out of this sandbox or frame and we're gonna be moving into a new one. Every time we call a function, what's going to happen is we're going to slice a new frame off the stack. This is now going to be the active frame. Our goroutine is now going to be operating within this sandbox, this level of isolation. Which once again means that we're gonna execute this code inside of increment. We're gonna perform this new data transformation, then the data the goroutine needs to perform this transformation better be inside of this frame cause this is the only place we can operate in. This is where the idea of parameters comes from. We have been using parameters our whole programming lives. We learned about API design. We've done all of these things, but I wanna show you the mechanics behind it because without the mechanics of parameters, we wouldn't be able to encapsulate at all. These parameters are really serving a mechanical purpose on top of our design purpose, and that is to get data inside of this new frame so the goroutine can operate this new data transformation in a level of isolation with a level of immutability. What we're doing on line 16 is passing the value of count across this programming boundary. Because everything in Go is passed by value, what that means is that we're gonna make a copy of the data as it goes across the boundary. You're gonna hear me start using three different terms. You're gonna hear me use the word data, and data's what we're working with. Concrete data, if you don't understand the data, you don't understand the problem. There's two types of data that we operate with. It is the value itself, like this integer value 10, or it's the value's address. Yes, addresses are data, and I want you to always understand that. In this case, what we're passing across the program boundary is the value itself, which means we're making a copy of the value, the four bytes. We're gonna throw it over this program boundary, which means that those four bytes have to end up, now, inside this frame as well. This is where your parameters come from. This parameter we're declaring inside of inc, increment, sorry. Inc int, what that is there for is to capture or hold that value we're throwing over the program boundary so the goroutine can operate this data transformation. This becomes inc. Passed by value means we make copies and we store copies. There it is. Now, the goroutine can operate within this function right here, which it is, and on line 27 what you see is a read-modify-write operation. Line 27, inc plus plus, which means that we are now mutating memory, but we're mutating it right here. What's really important is that this frame is allowing the goroutine to mutate memory without any cause of side effects throughout the program. The memory mutation is happening in isolation within our sandbox with a level of mutability in the sense that we don't affect anything else outside of this execution context. This is a very, very important and powerful mechanism. What we're really seeing here is what is called values semantics. We're gonna focus a lot in this class on the value and pointer semantics behavior that the language gives you. If you wanna write code in Go that is optimized for correctness, that you can read and understand the impact of things, then your value and your pointer semantics are everything. What we're looking at here is an example of value semantics. There's a value here in main for count. Now, we operate a different transformation around that data, and that means that every data transformation, every piece of code that's operating on it gets its own copy of the value. This is value semantics. It's very, very important. Value semantics has the benefit of again this idea of isolation and mutability. It's going to also, potentially, in many cases give us some performance. We're gonna talk about that. But, I told you engineering is not about just hacking code, it's about knowing the cost of things. Everything has a cost, nothing is free. So the question now is what is the cost of value semantics? One of the costs of value semantics is that we have multiple copies of the data throughout the program. There is no efficiency with the value semantics, and sometimes it can be very complicated to get a piece of data that's changed and to get that updated everywhere it needs to be. Our value semantics are very powerful semantics because it's gonna reduce things like side effects. We'll talk about that. It's giving us isolation, it's giving us these levels of immutability that are so important towards integrity. Sometimes, the inefficiency of value semantics might cause more complexity in the code. It might even cause some performance problems, and performance does matter. One of the things we've gotta learn is how to balance our value and our pointer semantics. Right now, all we're looking at here is the value semantics. When the increment function returns and we're back up in main, now what's going to happen is this goroutine is no longer operating in this active frame. This is now our active frame. The goroutine is now operating here, and if I were to run this program, what we're gonna see is that mutation that we made got isolated here, did not carry up or forward. Now, this piece of code is still operating on its own copy. This was operating on its own copy. We got the benefit of this mutation not affecting anything else. This is value semantics and this is a big part, again, of the beauty of the pass by value. What we see is what you get.
+#### Behind the Scenes - Part 4
+
+By the time the goroutine that was created for this Go program wants to execute main, it's already executed a bunch of code from the run time. 
+
+Any time a goroutine makes a function call, what it's going to do is take some memory off the stack. We call this a frame of memory. 
+
+Remember, every line of code we write is either reading memory or writing memory. Obviously, also allocating at some point. 
+
+The goroutine only has **direct** access to memory for the frame that it is operating on - called the **active frame**. 
+
+The stack frame is serving a really important purpose. It's creating a sandbox, a layer of isolation. 
+
+#### Behind the Scenes - Part 5
+
+**Mechanics and Semantics** 
+- Mechanics: how things work. 
+- Semantics: how things behave. 
+
+---
+
+Every time you make a **function call**, what we're really doing is crossing over a **program boundary**. 
+
+Program boundaries are important to identify, because it means that we're gonna be moving out of this sandbox or frame and we're gonna be moving into a new one. 
+
+Every time we call a function, what's going to happen is we're going to slice a new frame off the stack. 
+
+This is where the idea of **parameters** comes from. Parameters are really serving a mechanical purpose on top of our design purpose, and that is to get data inside of this new frame so the goroutine can operate this new data transformation in a level of isolation with a level of immutability. 
+
+**_Everything_** in Go is **passed by value**, what that means is that we're gonna make a **copy** of the data as it goes across the boundary. 
+
+There's two types of data that we operate with; the **value itself** or the **value's address**. Yes, addresses are data, and I want you to always understand that. 
+
+When you pass the **data value itself** into a parameter, this is called **value semantics**. 
+
+When you pass the **data value's address** into a parameter, this is called **pointer semantics**. 
+
+
