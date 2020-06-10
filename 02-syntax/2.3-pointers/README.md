@@ -315,6 +315,43 @@ Anytime you mix semantics we're going to have a problem.
 
 So, here is a general guideline; never use **pointer semantics** during **construction** -  rather only use **value semantics** during **construction**. 
 
+uggh:
+
 ![](img/ughh.png)
 
-So if you start the life of a variable as a pointer, you're walking away from readability, and you're walking away from this idea that construction tells you nothing. This is what we really wanna do. And you wanna see some really nasty code, we talk about mixing semantics. Imagine you saw code like this, and I've seen this before. This stuff really makes me cry. Look, we're using value semantics on the return, pointer semantics on line 39 on the construction, and you're going back to value semantics on line 46 because you gotta get back to it. And what's really interesting about this code is that value never escapes the heap. We're using value semantics, yet your code is using pointers. Oh, I wanna just duct tape my head when I see this kind of stuff. This is not good. So, we want to make sure that we're using the right semantics and semantic consistency all of the time. We don't want to construct values to variables using pointer semantics. We want to leverage the ampersand in the right place. Now what's also very powerful here is you're gonna use go build to build your binaries, and when you use the gc flags on the go build calls, and we'll do this as well when we're on go testing later on, but when you use this set of flags on building and testing, what you're gonna get is not a binary, but what we're gonna get is the escape analysis report. We're gonna come back to this during profiling because I want to show you how powerful it is to have this report because when we look at a profiler, it can only show us what is allocating. It can't tell us why. This report tells us why something is allocating. So I don't want you using it while you're coding. We're gonna use this as it relates to profiling. But notice down here, what it basically tells us is that we're u to the heap and it's because of the return. Again, the return is causing a share up the call stack, which means you can't leave it on this frame 'cause once we come back here, this is the active frame, it has to escape to the heap. We now have an allocating, we now need garbage collection involved.
+... more uggh:
+
+![](img/ughh2.png)
+
+---
+
+#### Behind the Scenes - Part 7
+
+If the compiler doesn't know the size of a value at compile time, it must immediately construct it on the heap. 
+
+This is because the stack frames for every function are sized at compile time. Frames are not dynamic. 
+
+What happens when you've got a Go routine that's making lots of function calls and eventually it runs out of stack space?  
+
+We get a new stack - very unique from a programming language
+
+It's going to do is allocate a larger stack, 25% larger than the original one, and then copy all the frames over.
+
+But this isn't something that's going to happen all of the time. 2K is usually more than enough for our stacks, because you usually don't go more than even like 10 function calls deep. 
+
+![](img/new-stack.png)
+
+---
+
+See [example5.go](example5/example5.go) for interesting example.
+
+---
+
+Since a value can move in memory that's on the stack, this actually creates an interesting constraint for us in Go - no stack can have a pointer to another stack. 
+
+Imagine, we had all of these stacks all over the place, hundreds of thousands of Go routines with pointers to each other's stacks. If a stack had to grow, we would have to track every pointer that points to this stack and update it as well. You want to talk about _stop the world_ latency, that would be insane. 
+
+---
+
+#### Behind the Scenes - Part 8
+
