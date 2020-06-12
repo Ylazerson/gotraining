@@ -8,12 +8,6 @@
 
 Pointers provide a way to share data across program boundaries. Having the ability to share and reference data with a pointer provides the benefit of efficiency. There is only one copy of the data and everyone can see it changing. The cost is that anyone can change the data which can cause side effects in running programs.
 
-## Notes
-
-* Use pointers to share data.
-* Values in Go are always pass by value.
-* "Value of", what's in the box. "Address of" ( **&** ), where is the box.
-* The (*) operator declares a pointer variable and the "Value that the pointer points to".
 
 ## Escape Analysis
 
@@ -22,23 +16,7 @@ Pointers provide a way to share data across program boundaries. Having the abili
 * When the compiler doesn’t know the size of a value at compile time.
 * When a value is decoupled through the use of function or interface values.
 
-## Garbage Collection History
 
-The design of the Go GC has changed over the years:
-* Go 1.0, Stop the world mark sweep collector based heavily on tcmalloc.
-* Go 1.2, Precise collector, wouldn't mistake big numbers (or big strings of text) for pointers.
-* Go 1.3, Fully precise tracking of all stack values.
-* Go 1.4, Mark and sweep now parallel, but still stop the world.
-* Go 1.5, New GC design, focusing on latency over throughput.
-* Go 1.6, GC improvements, handling larger heaps with lower latency.
-* Go 1.7, GC improvements, handling larger number of idle goroutines, substantial stack size fluctuation, or large package-level variables.
-* Go 1.8, GC improvements, collection pauses should be significantly shorter than they were in Go 1.7, usually under 100 microseconds and often as low as 10 microseconds.
-* Go 1.9, Large object allocation performance is significantly improved in applications using large (>50GB) heaps containing many large objects.
-* Go 1.10, Many applications should experience significantly lower allocation latency and overall performance overhead when the garbage collector is active.
-
-## Garbage Collection Semantics
-
-[Garbage Collection Semantics Part I](https://www.ardanlabs.com/blog/2018/12/garbage-collection-in-go-part1-semantics.html) - William Kennedy
 
 ## Stack vs Heap
 
@@ -53,9 +31,8 @@ _"The stack is for data that needs to persist only for the lifetime of the funct
 [Using Pointers In Go](https://www.ardanlabs.com/blog/2014/12/using-pointers-in-go.html) - William Kennedy    
 [Understanding Pointers and Memory Allocation](https://www.ardanlabs.com/blog/2013/07/understanding-pointers-and-memory.html) - William Kennedy    
 
-### Stacks
 
-[Contiguous Stack Proposal](https://docs.google.com/document/d/1wAaf1rYoM4S4gtnPh0zOlGzWtrZFQ5suE8qr2sD8uWQ/pub)  
+
 
 ### Escape Analysis and Inlining
 
@@ -355,3 +332,7 @@ Imagine, we had all of these stacks all over the place, hundreds of thousands of
 
 #### Behind the Scenes - Part 8
 
+**Deep Dive into GC**
+- Not crucial for now to remember all the nitty-gritty, but it is cool stuff
+- [2.3 Pointers - Part 5 (GC)](https://learning.oreilly.com/videos/ultimate-go-programming/9780135261651/9780135261651-UGP2_01_02_03_05)
+- [Garbage Collection Semantics Part I](https://www.ardanlabs.com/blog/2018/12/garbage-collection-in-go-part1-semantics.html) - William Kennedy
