@@ -45,14 +45,13 @@ func main() {
 	constant := now.Add(-timeout)
 
 	// Subtract 5 nanoseconds from now using a variable of type int64.
-	minusFive := int64(-5)
-	variable := now.Add(minusFive)
-
+	//minusFive := int64(-5)
+	//variable := now.Add(minusFive)
 	// example4.go:50: cannot use minusFive (type int64) as type time.Duration in argument to now.Add
 
 	// Display the values.
 	fmt.Printf("Now     : %v\n", now)
 	fmt.Printf("Literal : %v\n", literal)
 	fmt.Printf("Constant: %v\n", constant)
-	fmt.Printf("Variable: %v\n", variable)
+	//fmt.Printf("Variable: %v\n", variable)
 }

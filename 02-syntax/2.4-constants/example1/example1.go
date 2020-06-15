@@ -4,6 +4,8 @@
 // implementation in Go.
 package main
 
+import "fmt"
+
 func main() {
 
 	// -- --------------------------------------
@@ -32,6 +34,7 @@ func main() {
 
 	// Variable answer will of type float64.
 	var answer = 3 * 0.333 // KindFloat(3) * KindFloat(0.333)
+	fmt.Println(answer)
 
 	// Constant third will be of kind floating point.
 	const third = 1 / 3.0 // KindFloat(1) / KindFloat(3.0)
