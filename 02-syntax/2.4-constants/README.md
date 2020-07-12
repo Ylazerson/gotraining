@@ -26,4 +26,4 @@
 - **Kind Promotion**: 
     - Tells you how things promote, such as floats promote over ints and types always promote over kind. 
 - A constant has to be at least of **256 bits** of precision (like a high precision calculator). 
-- Remember now that there's **two** types of constants, constants of a kind and constants of a type. Literal values in Go are **constants of a kind**, they're **unnamed constants**, constants of a kind can be implicitly converted by the compiler. 
+- Remember now that there's **two** types of constants, constants of a kind and constants of a type. **Literal values** in Go are **constants of a kind**, they're **unnamed constants**, constants of a kind can be implicitly converted by the compiler. 

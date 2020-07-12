@@ -5,7 +5,7 @@ package main
 
 // Number of elements to grow each stack frame.
 // Run with 1 and then with 1024
-const size = 1
+const size = 1024
 
 // main is the entry point for the application.
 func main() {

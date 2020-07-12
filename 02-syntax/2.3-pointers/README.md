@@ -6,7 +6,7 @@
 
 ## Pointers
 
-Pointers provide a way to share data across program boundaries. Having the ability to share and reference data with a pointer provides the benefit of efficiency. There is only one copy of the data and everyone can see it changing. The cost is that anyone can change the data which can cause side effects in running programs.
+Pointers provide a way to share data across **program boundaries**. Having the ability to share and reference data with a pointer provides the benefit of efficiency. There is only one copy of the data and everyone can see it changing. The cost is that anyone can change the data which can cause side effects in running programs.
 
 
 ## Escape Analysis
@@ -96,10 +96,10 @@ Everything in Go is **pass by value**.
 #### Behind the Scenes - Part 1 
 
 Remember
-- **G**: Goroutine
-- **P**: Logical Processor
+- **G**: **G**oroutine
+- **P**: Logical **P**rocessor
 - **M**: OS Thread
-- **C**: Core
+- **C**: **C**ore
 
 When your Go program starts up, it's gonna be given a **`P`** or a **logical processor** for every **core** (**`C`**) that's identified on the host machine. 
 
@@ -141,7 +141,7 @@ At the operating system level, your stack is a **contiguous** block of memory an
 
 **1MG** of memory for every stack, and therefore for every thread. 
 
-**`G`**s are very much like **`M`**s; we could almost say that they're the same but **`G`** above the operating system. 
+**`G`**'s are very much like **`M`**'s; we could almost say that they're the same but **`G`** above the operating system. 
 
 A **`G`** has a stack of memory; **2K** in size (a lot lot smaller than **1MG**) 
 
@@ -184,7 +184,7 @@ When you pass the **data value's address** into a parameter, this is called **po
 
 ---
 
-**Pointer semantics** serve one purpose and that is to share a piece of data across a **program boundary**.
+**Pointer semantics** serve **1** purpose and that is to share a piece of data across a **program boundary**.
 
 What happens when you pass **data value's address**: 
 - Now you might think that this is what's called a pass by reference. 
@@ -290,7 +290,7 @@ So memory is left alone on the stack as we go _up_ and cleaned on the way _down_
 
 Anytime you mix semantics we're going to have a problem. 
 
-So, here is a general guideline; never use **pointer semantics** during **construction** -  rather only use **value semantics** during **construction**. 
+So, here is a general guideline; **never** use **pointer semantics** during **construction** -  rather only use **value semantics** during **construction**. 
 
 uggh:
 

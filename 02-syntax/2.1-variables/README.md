@@ -9,6 +9,8 @@
     1. size
     2. representation (what it represents)
 
+<br>
+
 - In general, just use `int` 
     - Its size will be based on the architecture that we are building for.
     - For example, on an AMD64 (a 64-bit architecture): 
@@ -17,13 +19,15 @@
         - In other words, Go says, if your address and your word size is 8 bytes, let's just make the integer follow. 
         - ... **mechanical sympathies** at its finest!. 
 
+<br>
+
 - **Zero Values** 
     - ... very very important - it's for integrity    
     - This is going to help with a huge number of bugs that we found in the past ... 
 
 
 - Follow this rule: if you want to declare a variable and it's gonna be set to its zero value state, use `var` approach.
-    - `var` gives us zero value 100% of the time
+    - `var` gives us **zero value** 100% of the time
 ```go
 var a int
 var b string
@@ -60,7 +64,7 @@ var d bool
 - What casting has done traditionally: 
     - Let's say that we allocated a one byte integer.     
     - Let's say for some silly crazy reason, I decide that I really want `a`, not to represent a one byte integer, but a four byte integer. 
-    - Casting will allow me to tell the compiler, look, you know and I know that `a` is an a one byte integer, but casting let's us pretend that what that memory really is is a four byte integer, and the compiler trusting us will just say, okay, and suddenly now, if I'm casting a from one bytes to four bytes, I have the ability to read and write memory across those four bytes from this particular location. 
+    - Casting will allow me to tell the compiler, look, you know and I know that `a` is an a one byte integer, but casting let's us pretend that what that memory really is is a four byte integer, and the compiler trusting us will just say, okay, and suddenly now, if I'm casting `a` from one bytes to four bytes, I have the ability to read and write memory across those four bytes from this particular location. 
     - I could be potentially corrupting a lot of memory here.  
 - The idea of **conversion** over **casting** is an **integrity** play. 
 

@@ -1,5 +1,4 @@
-// All material is licensed under the Apache License Version 2.0, January 2004
-// http://www.apache.org/licenses/LICENSE-2.0
+// B''H
 
 // Declare three variables that are initialized to their zero value and three
 // declared with a literal value. Declare variables of type string, int and
