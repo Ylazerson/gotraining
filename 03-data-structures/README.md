@@ -1,7 +1,7 @@
 # B"H
 
 
-- We're gonna learn why Go only has arrays, slices, and maps
+- We're gonna learn why Go only has **arrays**, **slices**, and **maps**
 
 ---
 
@@ -17,9 +17,9 @@
 * If your data is changing, your problems are changing. When your problems are changing, the data transformations needs to change with it.
 * Uncertainty about the data is not a license to guess but a directive to STOP and learn more.
 * Solving problems you don't have, creates more problems you now do.
-* If performance matters, you must have mechanical sympathy for how the hardware and operating system work.
+* If performance matters, you must have mechanical sympathy for how the hardware and operating systems work.
 * Minimize, simplify and REDUCE the amount of code required to solve each problem. Do less work by not wasting effort.
-* Code that can be reasoned about and does not hide execution costs can be better understood, debugged and performance tuned.
+* Code that can be reasoned about and **does not hide execution costs** can be better understood, debugged and performance tuned.
 * Coupling data together and writing code that produces predictable access patterns to the data will be the most performant.
 * Changing data layouts can yield more significant performance improvements than changing just the algorithms.
 * Efficiency is obtained through algorithms but performance is obtained through data structures and layouts.
