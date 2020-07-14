@@ -1,15 +1,13 @@
 // B''H //
 
-// Sample program to show how to grow a slice using the built-in function append
-// and how append grows the capacity of the underlying array.
+// Same as before but now with cap set ahead of time.
 package main
 
 import "fmt"
 
 func main() {
 
-	// Declare a nil slice of strings.
-	var data []string
+	data := make([]string, 0, 1e5)
 
 	// Capture the capacity of the slice.
 	lastCap := cap(data)
