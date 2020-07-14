@@ -247,3 +247,49 @@ If you use the slice, which is the most important data structure in Go, not the 
 
 
 Think about it, your stacks, contiguous memory. Your maps, underneath, contiguous memory. Your slice, a vector, contiguous memory. Predictable access patterns are everything today, this is why that processor speed can go down, and we can still get some better performance. 
+
+---
+
+## 3.2 Arrays—Part 2 (Semantics)
+
+```go
+var fruits [5]string
+fruits[0] = "Apple"
+```
+
+![](img/3.2-1.png)
+
+<br>
+---
+
+Go only uses a `for` statement for all of its iteration. 
+
+The `for range` is a very special and powerful iterator in Go. The reason why it's so powerful is because the `for range` comes with two different semantics. 
+- There are **value semantics** and **pointer semantics** associated with the `for range`. 
+
+```go
+// Iterate over the array of strings. For-range using value semantics.
+for i, fruit := range fruits {
+	fmt.Println(i, fruit)
+}
+```
+- On every iteration, we're gonna get the index position, zero, one, two, three, four. 
+- The local variable `fruit` in the `for` loop is going to be a **copy** of every value that we're iterating over. 
+- Nothing here is on the heap because it's a literal string. But let's say it wasn't a literal string. Let's say that this string was created dynamically. The only thing that would have to be on the heap is the actual string bytes. Everything else (all the `string` variables and their copies that point to those same bytes) can stay on our stack. **The string value is designed to be leveraging value semantics, it's designed to be copied**. 
+
+<br>
+---
+
+Open [Value and pointer semantics using for-range](example4/example4.go)
+
+
+<br>
+---
+
+This is not anything that I'm making up. The value and the pointer semantics are very real. 
+
+The data drives the semantic, and whatever semantic we're supposed to use for the data, we have to be consistent and clean throughout our code base. 
+
+I'm gonna be stressing over and over and over again that **we do not want to be mixing semantics**. 
+
+We're gonna look at our data, we're gonna understand our data, we're gonna choose our data semantic, and then all of the code we write will follow and respect the semantic. 

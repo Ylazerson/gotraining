@@ -17,7 +17,7 @@ func main() {
 	fruits[3] = "Grape"
 	fruits[4] = "Plum"
 
-	// Iterate over the array of strings.
+	// Iterate over the array of strings. For-range using value semantics.
 	for i, fruit := range fruits {
 		fmt.Println(i, fruit)
 	}
