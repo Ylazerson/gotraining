@@ -1,0 +1,611 @@
+<!DOCTYPE HTML>
+	<head>
+    	<!-- Global site tag (gtag.js) - Google Analytics -->
+    <!--OLD CODE<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58643-34"></script>-->
+
+    <!--OLD CODE<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-58643-34');
+    </script>-->
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-5VVPHVN');</script>
+    <!-- End Google Tag Manager -->
+
+    
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Pastebin.com - Developers API</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/pastebin.min.v3.js"></script>
+            
+            
+		<link href="/i/pastebin.min.v9.css?1594840470" rel="stylesheet" type="text/css" />
+		<!--[if lt IE 10]>
+			<link href="/i/pastebin.ie8.css" rel="stylesheet" type="text/css" />
+		<![endif]-->
+
+ 
+		<style>body{-webkit-text-size-adjust:none;}</style>
+				<meta property="fb:app_id" content="231493360234820" />
+		<meta property="og:title" content="Pastebin.com - Developers API" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://pastebin.com/api" />
+		<meta property="og:image" content="https://pastebin.com/i/facebook.png" />
+		<meta property="og:site_name" content="Pastebin" />
+		<meta name="google-site-verification" content="jkUAIOE8owUXu8UXIhRLB9oHJsWBfOgJbZzncqHoF4A" />
+		<link rel="canonical" href="https://pastebin.com/api" />
+				<meta name="viewport" content="width=device-width, initial-scale=0.75, maximum-scale=1.0, user-scalable=yes">
+		<script type="text/javascript">
+			if (top != self)
+				top.location.href = location.href;
+		</script>
+
+                    <!-- Amazon Tag Manager -->
+            <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/21892923737/pb_header_728x90', [[300, 250], [320, 50], [468, 60], [728, 90], [970, 90]], 'gpt-passback').addService(googletag.pubads());
+    googletag.defineSlot('/21892923737/pb_footer_728x90', [[300, 250], [320, 50], [468, 60], [728, 90], [970, 90]], 'div-gpt-ad-1593095439111-0').addService(googletag.pubads());
+    googletag.defineSlot('/21892923737/pb_sidebar_120x600', [[160, 600], [120, 600]], 'div-gpt-ad-1593095572267-0').addService(googletag.pubads());
+    // googletag.pubads().enableSingleRequest();
+    googletag.pubads().disableInitialLoad();
+    googletag.enableServices();
+  });
+</script>
+<script type='text/javascript'>
+  !function(a9,a,p,s,t,A,g){if(a[a9])return;function q(c,r){a[a9]._Q.push([c,r])}a[a9]={init:function(){q("i",arguments)},fetchBids:function(){q("f",arguments)},setDisplayBids:function(){},targetingKeys:function(){return[]},_Q:[]};A=p.createElement(s);A.async=!0;A.src=t;g=p.getElementsByTagName(s)[0];g.parentNode.insertBefore(A,g)}("apstag",window,document,"script","//c.amazon-adsystem.com/aax2/apstag.js");
+
+  // initialize apstag and have apstag set bids on the googletag slots when they are returned to the page
+  apstag.init({
+    pubID: 'fcfacf81-21b4-42d5-b3bd-672af22fe303',
+    adServer: 'googletag',
+    bidTimeout: 2e3
+  });
+  // request the bids for the four googletag slots
+  apstag.fetchBids({
+    slots: [
+        {
+            slotID: 'gpt-passback', //example: div-gpt-ad-1475102693815-0
+            slotName: '/21892923737/pb_header_728x90', //example: //example: /116082170/slot2
+            sizes: [[300, 250], [320, 50], [468, 60], [728, 90], [970, 90]] //example: [[300,250],[300, 600]]
+        },
+        {
+            slotID: 'div-gpt-ad-1593095439111-0', //example: div-gpt-ad-1475102693815-0
+            slotName: '/21892923737/pb_footer_728x90', //example: //example: /116082170/slot2
+            sizes: [[300, 250], [320, 50], [468, 60], [728, 90], [970, 90]] //example: [[300,250],[300, 600]]
+        },
+        {
+            slotID: 'div-gpt-ad-1593095572267-0', //example: div-gpt-ad-1475102693815-0
+            slotName: '/21892923737/pb_sidebar_120x600', //example: //example: /116082170/slot2
+            sizes: [[160, 600], [120, 600]] //example: [[300,250],[300, 600]]
+        },
+      // {
+      //   slotID: 'enter your slotID',
+      //   slotName: 'enter your DFP ad unit path',
+      //   sizes: [[width, height], [width, height]]
+      // }
+    ]
+  }, function (bids) {
+    // set apstag bids, then trigger the first request to DFP
+    googletag.cmd.push(function () {
+      apstag.setDisplayBids();
+      googletag.pubads().refresh();
+    });
+  });
+</script>
+            <!-- PowerAds tag -->
+            <script async src="https://powerad.ai/script.js"></script>
+            </head>
+	<body>
+
+            <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VVPHVN"
+                          height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+    
+	<div id="main_frame">
+		<div id="jq-dropdown-1" class="jq-dropdown jq-dropdown-anchor-right jq-dropdown-scroll">
+			<ul class="jq-dropdown-menu">
+				
+				<li onclick="location.href='/signup'" class="dd_su">Sign Up</li>
+				<li onclick="location.href='/login'" class="dd_lo">Login</li>
+				<li class="lih_div"></li>
+				<li onclick="location.href='/api'" class="lih_640">API</li>
+				<li onclick="location.href='/faq'" class="lih_640">FAQ</li>
+				<li onclick="location.href='/tools'" class="lih_640">Tools</li>
+				<li onclick="location.href='/archive'" class="lih_640">Archive</li>			</ul>
+		</div>
+		<div id="header">
+			<div id="header_wrap">
+				<div id="header_top">
+					<div id="header_logo" onclick="location.href='/'">PASTEBIN</div>
+                    <div id="header_links">
+                                                    <a href="/pro" class="mmh">GO <img src="/i/t.gif" alt="" class="header_pro_btn"></a>
+                        
+                        <a href="/api" class="mmh">API</a>
+                        <a href="/tools" class="mmh">TOOLS</a>
+                        <a href="/faq" class="mmh">FAQ</a>
+                        <a href="https://deals.pastebin.com" target="_blank" class="mmh">DEALS</a>
+                    </div>
+                    <!--
+                    <div id="header_search">
+                        <form class="search_form" name="search_form" method="get" action="/search" id="cse-search-box">
+                            <input class="search_input" type="text" name="q" size="5" value="" placeholder="Search..." />
+                        </form>
+                    </div>
+                    -->
+                    <div id="header_new_paste" class="new_paste_button" onclick="location.href='/'">paste</div>
+                    
+			<div class="header_sign">
+				<a href="/login" class="btn-sign sign-in">SIGN IN</a>
+				<a href="/signup" class="btn-sign sign-up">SIGN UP</a>
+			</div>				</div>
+			</div>
+		</div>
+		<div id="super_frame">
+			<div id="monster_frame">
+				<div id="content_frame">
+					<div id="content_right">						
+
+	<div class="content_right_menu">
+									<div class="content_right_title"><a href="/archive">Public Pastes</a></div>
+									<div id="menu_2">
+										<ul class="right_menu"><li><a href="/8V5D131E">Untitled</a><span>JavaScript | 48 min ago</span></li><li><a href="/VehGz6c0">Untitled</a><span>JSON | 51 min ago</span></li><li><a href="/Rw6iWUPU">Untitled</a><span>Pawn | 1 hour ago</span></li><li><a href="/MyrBanSZ">Untitled</a><span>Go | 1 hour ago</span></li><li><a href="/LXMCFQxZ">Untitled</a><span>Pawn | 1 hour ago</span></li><li><a href="/vwzXCCf0">lcs</a><span>C | 1 hour ago</span></li><li><a href="/HTJidLXT">Untitled</a><span>Pawn | 1 hour ago</span></li><li><a href="/UQp0ygXL">Untitled</a><span>Java | 2 hours ago</span></li></ul></div></div>	<div id="abrpm2"></div>
+	
+			<div style="padding: 0; width:160px;margin: 10px 0;clear:left;text-align: center;">
+                <!-- /21892923737/pb_sidebar_120x600 -->
+                <div id="div-gpt-ad-1593095572267-0">
+                  <script>
+                    googletag.cmd.push(function() { googletag.display("div-gpt-ad-1593095572267-0"); });
+                  </script>
+                </div>
+			</div>
+			<div class="layout_clear"></div>
+<div id="steadfast" title="Pastebin is proudly hosted by Steadfast.net" onclick="location.href='http://steadfast.net/?utm_source=pastebin.com&amp;utm_medium=referral&amp;utm_content=hosting_by_banner&amp;utm_campaign=referral_20140118_x_x_pastebin_partner&amp;source=referral_20140118_x_x_pastebin_partner'"></div>
+	</div>
+	<div id="content_left"><div id="ie_msg"></div>
+					
+		
+			<div class="banner_728" id="banner_728">
+			    <div id="gpt-passback">
+                    <script>
+                      googletag.cmd.push(function() { googletag.display("gpt-passback"); });
+                    </script>
+                </div>
+			</div>
+			<div class="layout_clear"></div>
+	<div class="content_text"><div id="notice" style="margin:0 0 0 0">Looking for our Scraping API? <a href="/doc_scraping_api">Check out the Scraping API documentation</a>.</div></div>
+	<div class="content_title">Developers API</div>	
+		<div class="content_text">
+		This is the Pastebin.com developers API documentation page. Here you can find all the information you need to get started with our API. If you have questions, feel free to <a href="/contact">contact us</a>. If you are a developer, and you are building something for Pastebin which might benefit others as well, be sure to contact us, as we might be able to feature your creation on our <a href="/tools">tools page</a>.
+	
+		<div style="margin: 8px 0 0 30px">
+			1. <a href="/api#1">Your Unique Developer API Key</a><br />
+			2. <a href="/api#2">Creating A New Paste</a><br />
+			3. <a href="/api#3">Creating A New Paste, [Required Parameters]</a><br />
+			4. <a href="/api#4">Creating A New Paste, [Optional Parameters]</a><br />
+			5. <a href="/api#5">Creating A New Paste, The 'api_paste_format' Paramater In Detail</a><br />
+			6. <a href="/api#6">Creating A New Paste, The 'api_paste_expire_date' Paramater In Detail</a><br />
+			7. <a href="/api#7">Creating A New Paste, The 'api_paste_private' Paramater In Detail</a><br />
+			8. <a href="/api#8">Creating An 'api_user_key' Using The API Member Login System</a><br />
+			9. <a href="/api#9">Listing Pastes Created By A User</a><br />
+			10. <a href="/api#11">Deleting A Paste Created By A User</a><br />
+			11. <a href="/api#12">Getting A Users Information And Settings</a><br />
+			12. <a href="/api#13">Getting raw paste output of users pastes including 'private' pastes</a><br />
+			13. <a href="/api#14">Getting raw paste output of any 'public' &amp; 'unlisted' pastes</a><br />
+		</div>
+	</div>
+	<a name="1"></a>
+		<div class="content_sub_title">Your Unique Developer API Key</div>
+		<div class="content_text">
+			Everybody using our API is required to use a valid Developer API Key. You automatically get a key when you become a member of Pastebin.
+		
+		 Please login to your account, and return to this page to find your Developer API Key.
+		</div>
+
+<a name="2"></a>
+<div class="content_sub_title">Creating A New Paste</div>
+<div class="content_text">
+	Creating a new paste via our API is very easy. You simply have to send a valid <span class="mark">POST</span> request to the url shown below. Please make sure you are sending the data <br />as the <span class="mark">UTF-8</span> charset.
+	<div class="code_box boostit">https://pastebin.com/api/api_post.php</div>
+	Below is a PHP example using curl how to create a new paste:
+	<div class="code_box" style="overflow:auto">$api_dev_key 			= 'YOUR API DEVELOPER KEY'; // your api_developer_key
+$api_paste_code 		= 'just some random text you :)'; // your paste text
+$api_paste_private 		= '1'; // 0=public 1=unlisted 2=private
+$api_paste_name			= 'justmyfilename.php'; // name or title of your paste
+$api_paste_expire_date 		= '10M';
+$api_paste_format 		= 'php';
+$api_user_key 			= ''; // if an invalid or expired api_user_key is used, an error will spawn. If no api_user_key is used, a guest paste will be created
+$api_paste_name			= urlencode($api_paste_name);
+$api_paste_code			= urlencode($api_paste_code);
+
+$url 				= 'https://pastebin.com/api/api_post.php';
+$ch 				= curl_init($url);
+
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'api_option=paste&api_user_key='.$api_user_key.'&api_paste_private='.$api_paste_private.'&api_paste_name='.$api_paste_name.'&api_paste_expire_date='.$api_paste_expire_date.'&api_paste_format='.$api_paste_format.'&api_dev_key='.$api_dev_key.'&api_paste_code='.$api_paste_code.'');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_VERBOSE, 1); 
+curl_setopt($ch, CURLOPT_NOBODY, 0);
+
+$response  			= curl_exec($ch);
+echo $response;</div>
+	Possible Good API Responses: (example)
+	<div class="code_box" style="overflow:auto">https://pastebin.com/UIFdu235s</div>
+	Possible Bad API Responses:
+	<div class="code_box" style="overflow:auto">Bad API request, invalid api_option
+Bad API request, invalid api_dev_key
+Bad API request, IP blocked
+Bad API request, maximum number of 25 unlisted pastes for your free account
+Bad API request, maximum number of 10 private pastes for your free account
+Bad API request, api_paste_code was empty
+Bad API request, maximum paste file size exceeded
+Bad API request, invalid api_expire_date
+Bad API request, invalid api_paste_private
+Bad API request, invalid api_paste_format
+Bad API request, invalid api_user_key
+Bad API request, invalid or expired api_user_key</div>
+</div>
+<a name="3"></a>
+<div class="content_sub_title">Creating A New Paste, [Required Parameters]</div>
+<div class="content_text">
+	Include all the following <span class="mark">POST</span> parameters when you request the url:<br /><br />
+	1. <span class="mark">api_dev_key</span> - which is your unique API Developers Key.<br />
+	2. <span class="mark">api_option</span> - set as <span class="mark">paste</span>, this will indicate you want to create a new paste.<br />
+	3. <span class="mark">api_paste_code</span> - this is the text that will be written inside your paste.<br /><br />
+	Leaving any of these parameters out will result in an error.
+</div>
+<a name="4"></a>
+<div class="content_sub_title">Creating A New Paste, [Optional Parameters]</div>
+<div class="content_text">
+	These parameters are not required when you create a new paste, but are possible to add:<br /><br />
+	1. <span class="mark">api_user_key</span> - this paramater is part of the login system, which is explained further down the page.<br />
+	2. <span class="mark">api_paste_name</span> - this will be the name / title of your paste.<br />
+	3. <span class="mark">api_paste_format</span> - this will be the syntax highlighting value, which is explained in detail further down the page.<br />
+	4. <span class="mark">api_paste_private</span> - this makes a paste public, unlisted or private, <span class="mark">public = 0</span>, <span class="mark">unlisted = 1</span>, <span class="mark">private = 2</span><br />
+	5. <span class="mark">api_paste_expire_date</span> - this sets the expiration date of your paste, the values are explained futher down the page.
+</div>
+<a name="5"></a>
+<div class="content_sub_title">Creating A New Paste, The 'api_paste_format' Paramater In Detail</div>
+<div class="content_text">
+	We have over 200 syntax highlighting options available, below you can find a list of all the possible values you can use in combination with <span class="mark">api_paste_format</span>. Always include the value on the left from the list below, the value on the right is just the full name of the language in question.<br /><div style="font-size:1.2em;">
+
+	<div class="lang_div">
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<span class="mark"><a href="/archive/4cs">4cs</a></span> = 4CS</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/6502acme">6502acme</a></span> = 6502 ACME Cross Asse...</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/6502kickass">6502kickass</a></span> = 6502 Kick Assembler</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/6502tasm">6502tasm</a></span> = 6502 TASM/64TASS</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/abap">abap</a></span> = ABAP</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/actionscript">actionscript</a></span> = ActionScript</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/actionscript3">actionscript3</a></span> = ActionScript 3</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/ada">ada</a></span> = Ada</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/aimms">aimms</a></span> = AIMMS</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/algol68">algol68</a></span> = ALGOL 68</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/apache">apache</a></span> = Apache Log</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/applescript">applescript</a></span> = AppleScript</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/apt_sources">apt_sources</a></span> = APT Sources</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/arduino">arduino</a></span> = Arduino</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/arm">arm</a></span> = ARM</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/asm">asm</a></span> = ASM (NASM)</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/asp">asp</a></span> = ASP</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/asymptote">asymptote</a></span> = Asymptote</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/autoconf">autoconf</a></span> = autoconf</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/autohotkey">autohotkey</a></span> = Autohotkey</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/autoit">autoit</a></span> = AutoIt</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/avisynth">avisynth</a></span> = Avisynth</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/awk">awk</a></span> = Awk</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/bascomavr">bascomavr</a></span> = BASCOM AVR</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/bash">bash</a></span> = Bash</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/basic4gl">basic4gl</a></span> = Basic4GL</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/dos">dos</a></span> = Batch</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/bibtex">bibtex</a></span> = BibTeX</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/blitzbasic">blitzbasic</a></span> = Blitz Basic</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/b3d">b3d</a></span> = Blitz3D</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/bmx">bmx</a></span> = BlitzMax</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/bnf">bnf</a></span> = BNF</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/boo">boo</a></span> = BOO</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/bf">bf</a></span> = BrainFuck</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/c">c</a></span> = C</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/c_winapi">c_winapi</a></span> = C (WinAPI)</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/c_mac">c_mac</a></span> = C for Macs</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/cil">cil</a></span> = C Intermediate Language</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/csharp">csharp</a></span> = C#</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/cpp">cpp</a></span> = C++</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/cpp-winapi">cpp-winapi</a></span> = C++ (WinAPI)</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/cpp-qt">cpp-qt</a></span> = C++ (with Qt extensi...</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/c_loadrunner">c_loadrunner</a></span> = C: Loadrunner</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/caddcl">caddcl</a></span> = CAD DCL</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/cadlisp">cadlisp</a></span> = CAD Lisp</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/ceylon">ceylon</a></span> = Ceylon</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/cfdg">cfdg</a></span> = CFDG</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/chaiscript">chaiscript</a></span> = ChaiScript</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/chapel">chapel</a></span> = Chapel</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/clojure">clojure</a></span> = Clojure</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/klonec">klonec</a></span> = Clone C</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/klonecpp">klonecpp</a></span> = Clone C++</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/cmake">cmake</a></span> = CMake</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/cobol">cobol</a></span> = COBOL</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/coffeescript">coffeescript</a></span> = CoffeeScript</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/cfm">cfm</a></span> = ColdFusion</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/css">css</a></span> = CSS</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/cuesheet">cuesheet</a></span> = Cuesheet</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/d">d</a></span> = D</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/dart">dart</a></span> = Dart</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/dcl">dcl</a></span> = DCL</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/dcpu16">dcpu16</a></span> = DCPU-16</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/dcs">dcs</a></span> = DCS</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/delphi">delphi</a></span> = Delphi</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/oxygene">oxygene</a></span> = Delphi Prism (Oxygene)</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/diff">diff</a></span> = Diff</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/div">div</a></span> = DIV</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/dot">dot</a></span> = DOT</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/e">e</a></span> = E</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/ezt">ezt</a></span> = Easytrieve</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/ecmascript">ecmascript</a></span> = ECMAScript</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/eiffel">eiffel</a></span> = Eiffel</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/email">email</a></span> = Email</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/epc">epc</a></span> = EPC</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/erlang">erlang</a></span> = Erlang</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/euphoria">euphoria</a></span> = Euphoria</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/fsharp">fsharp</a></span> = F#</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/falcon">falcon</a></span> = Falcon</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/filemaker">filemaker</a></span> = Filemaker</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/fo">fo</a></span> = FO Language</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/f1">f1</a></span> = Formula One</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/fortran">fortran</a></span> = Fortran</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/freebasic">freebasic</a></span> = FreeBasic</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/freeswitch">freeswitch</a></span> = FreeSWITCH</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/gambas">gambas</a></span> = GAMBAS</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/gml">gml</a></span> = Game Maker</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/gdb">gdb</a></span> = GDB</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/genero">genero</a></span> = Genero</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/genie">genie</a></span> = Genie</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/gettext">gettext</a></span> = GetText</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/go">go</a></span> = Go</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/groovy">groovy</a></span> = Groovy</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/gwbasic">gwbasic</a></span> = GwBasic</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/haskell">haskell</a></span> = Haskell</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/haxe">haxe</a></span> = Haxe</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/hicest">hicest</a></span> = HicEst</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/hq9plus">hq9plus</a></span> = HQ9 Plus</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/html4strict">html4strict</a></span> = HTML</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/html5">html5</a></span> = HTML 5</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/icon">icon</a></span> = Icon</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/idl">idl</a></span> = IDL</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/ini">ini</a></span> = INI file</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/inno">inno</a></span> = Inno Script</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/intercal">intercal</a></span> = INTERCAL</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/io">io</a></span> = IO</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/ispfpanel">ispfpanel</a></span> = ISPF Panel Definition</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/j">j</a></span> = J</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/java">java</a></span> = Java</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/java5">java5</a></span> = Java 5</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/javascript">javascript</a></span> = JavaScript</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/jcl">jcl</a></span> = JCL</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/jquery">jquery</a></span> = jQuery</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/json">json</a></span> = JSON</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/julia">julia</a></span> = Julia</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/kixtart">kixtart</a></span> = KiXtart</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/kotlin">kotlin</a></span> = Kotlin</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/latex">latex</a></span> = Latex</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/ldif">ldif</a></span> = LDIF</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/lb">lb</a></span> = Liberty BASIC</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/lsl2">lsl2</a></span> = Linden Scripting</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/lisp">lisp</a></span> = Lisp</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/llvm">llvm</a></span> = LLVM</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/locobasic">locobasic</a></span> = Loco Basic</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/logtalk">logtalk</a></span> = Logtalk</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/lolcode">lolcode</a></span> = LOL Code</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/lotusformulas">lotusformulas</a></span> = Lotus Formulas</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/lotusscript">lotusscript</a></span> = Lotus Script</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/lscript">lscript</a></span> = LScript</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/lua">lua</a></span> = Lua</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/m68k">m68k</a></span> = M68000 Assembler</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/magiksf">magiksf</a></span> = MagikSF</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/make">make</a></span> = Make</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/mapbasic">mapbasic</a></span> = MapBasic</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/markdown">markdown</a></span> = Markdown</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/matlab">matlab</a></span> = MatLab</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/mirc">mirc</a></span> = mIRC</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/mmix">mmix</a></span> = MIX Assembler</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/modula2">modula2</a></span> = Modula 2</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/modula3">modula3</a></span> = Modula 3</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/68000devpac">68000devpac</a></span> = Motorola 68000 HiSof...</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/mpasm">mpasm</a></span> = MPASM</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/mxml">mxml</a></span> = MXML</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/mysql">mysql</a></span> = MySQL</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/nagios">nagios</a></span> = Nagios</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/netrexx">netrexx</a></span> = NetRexx</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/newlisp">newlisp</a></span> = newLISP</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/nginx">nginx</a></span> = Nginx</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/nim">nim</a></span> = Nim</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/text">text</a></span> = None</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/nsis">nsis</a></span> = NullSoft Installer</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/oberon2">oberon2</a></span> = Oberon 2</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/objeck">objeck</a></span> = Objeck Programming L...</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/objc">objc</a></span> = Objective C</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/ocaml">ocaml</a></span> = OCaml</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/ocaml-brief">ocaml-brief</a></span> = OCaml Brief</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/octave">octave</a></span> = Octave</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/oorexx">oorexx</a></span> = Open Object Rexx</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/pf">pf</a></span> = OpenBSD PACKET FILTER</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/glsl">glsl</a></span> = OpenGL Shading</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/oobas">oobas</a></span> = Openoffice BASIC</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/oracle11">oracle11</a></span> = Oracle 11</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/oracle8">oracle8</a></span> = Oracle 8</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/oz">oz</a></span> = Oz</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/parasail">parasail</a></span> = ParaSail</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/parigp">parigp</a></span> = PARI/GP</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/pascal">pascal</a></span> = Pascal</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/pawn">pawn</a></span> = Pawn</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/pcre">pcre</a></span> = PCRE</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/per">per</a></span> = Per</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/perl">perl</a></span> = Perl</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/perl6">perl6</a></span> = Perl 6</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/php">php</a></span> = PHP</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/php-brief">php-brief</a></span> = PHP Brief</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/pic16">pic16</a></span> = Pic 16</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/pike">pike</a></span> = Pike</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/pixelbender">pixelbender</a></span> = Pixel Bender</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/pli">pli</a></span> = PL/I</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/plsql">plsql</a></span> = PL/SQL</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/postgresql">postgresql</a></span> = PostgreSQL</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/postscript">postscript</a></span> = PostScript</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/povray">povray</a></span> = POV-Ray</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/powerbuilder">powerbuilder</a></span> = PowerBuilder</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/powershell">powershell</a></span> = PowerShell</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/proftpd">proftpd</a></span> = ProFTPd</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/progress">progress</a></span> = Progress</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/prolog">prolog</a></span> = Prolog</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/properties">properties</a></span> = Properties</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/providex">providex</a></span> = ProvideX</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/puppet">puppet</a></span> = Puppet</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/purebasic">purebasic</a></span> = PureBasic</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/pycon">pycon</a></span> = PyCon</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/python">python</a></span> = Python</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/pys60">pys60</a></span> = Python for S60</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/q">q</a></span> = q/kdb+</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/qbasic">qbasic</a></span> = QBasic</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/qml">qml</a></span> = QML</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/rsplus">rsplus</a></span> = R</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/racket">racket</a></span> = Racket</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/rails">rails</a></span> = Rails</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/rbs">rbs</a></span> = RBScript</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/rebol">rebol</a></span> = REBOL</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/reg">reg</a></span> = REG</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/rexx">rexx</a></span> = Rexx</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/robots">robots</a></span> = Robots</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/rpmspec">rpmspec</a></span> = RPM Spec</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/ruby">ruby</a></span> = Ruby</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/gnuplot">gnuplot</a></span> = Ruby Gnuplot</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/rust">rust</a></span> = Rust</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/sas">sas</a></span> = SAS</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/scala">scala</a></span> = Scala</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/scheme">scheme</a></span> = Scheme</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/scilab">scilab</a></span> = Scilab</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/scl">scl</a></span> = SCL</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/sdlbasic">sdlbasic</a></span> = SdlBasic</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/smalltalk">smalltalk</a></span> = Smalltalk</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/smarty">smarty</a></span> = Smarty</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/spark">spark</a></span> = SPARK</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/sparql">sparql</a></span> = SPARQL</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/sqf">sqf</a></span> = SQF</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/sql">sql</a></span> = SQL</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/standardml">standardml</a></span> = StandardML</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/stonescript">stonescript</a></span> = StoneScript</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/sclang">sclang</a></span> = SuperCollider</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/swift">swift</a></span> = Swift</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/systemverilog">systemverilog</a></span> = SystemVerilog</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/tsql">tsql</a></span> = T-SQL</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/tcl">tcl</a></span> = TCL</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/teraterm">teraterm</a></span> = Tera Term</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/thinbasic">thinbasic</a></span> = thinBasic</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/typoscript">typoscript</a></span> = TypoScript</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/unicon">unicon</a></span> = Unicon</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/uscript">uscript</a></span> = UnrealScript</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/upc">upc</a></span> = UPC</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/urbi">urbi</a></span> = Urbi</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/vala">vala</a></span> = Vala</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/vbnet">vbnet</a></span> = VB.NET</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/vbscript">vbscript</a></span> = VBScript</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/vedit">vedit</a></span> = Vedit</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/verilog">verilog</a></span> = VeriLog</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/vhdl">vhdl</a></span> = VHDL</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/vim">vim</a></span> = VIM</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/visualprolog">visualprolog</a></span> = Visual Pro Log</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/vb">vb</a></span> = VisualBasic</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/visualfoxpro">visualfoxpro</a></span> = VisualFoxPro</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/whitespace">whitespace</a></span> = WhiteSpace</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/whois">whois</a></span> = WHOIS</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/winbatch">winbatch</a></span> = Winbatch</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/xbasic">xbasic</a></span> = XBasic</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/xml">xml</a></span> = XML</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/xorg_conf">xorg_conf</a></span> = Xorg Config</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/xpp">xpp</a></span> = XPP</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/yaml">yaml</a></span> = YAML</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/z80">z80</a></span> = Z80 Assembler</div><div class="lang_div">&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark"><a href="/archive/zxbasic">zxbasic</a></span> = ZXBasic</div>
+		
+	</div>
+	<div style="clear:both">&nbsp;</div>
+</div>
+<a name="6"></a>
+<div class="content_sub_title">Creating A New Paste, The 'api_paste_expire_date' Paramater In Detail</div>
+<div class="content_text">
+	We have 9 valid values available which you can use with the <span class="mark">api_paste_expire_date</span> parameter:<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark">N</span> = Never<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark">10M</span> = 10 Minutes<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark">1H</span> = 1 Hour<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark">1D</span> = 1 Day<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark">1W</span> = 1 Week<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark">2W</span> = 2 Weeks<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark">1M</span> = 1 Month<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark">6M</span> = 6 Months<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark">1Y</span> = 1 Year
+</div>	
+<a name="7"></a>
+<div class="content_sub_title">Creating A New Paste, The 'api_paste_private' Paramater In Detail</div>
+<div class="content_text">
+	We have 3 valid values available which you can use with the <span class="mark">api_paste_private</span> parameter:<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark">0</span> = Public<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark">1</span> = Unlisted<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;<span class="mark">2</span> = Private (only allowed in combination with <span class="mark">api_user_key</span>, as you have to be logged into your account to access the paste)
+</div>			
+<a name="8"></a>
+<div class="content_sub_title">Creating An 'api_user_key' Using The API Member Login System</div>
+<div class="content_text">
+	With this API we allow you to create applications which use the Pastebin members system. Sending a valid <span class="mark">POST</span> request to our API login system will return a unique <span class="mark">api_user_key</span> which can then be used to create a paste as a logged in user. 
+	Please send the request to the link shown below:
+	<div class="code_box boostit">https://pastebin.com/api/api_login.php</div>
+	Include all the following <span class="mark">POST</span> parameters when you request the url:<br />
+	1. <span class="mark">api_dev_key</span> - this is your API Developer Key, in your case: YOUR API DEVELOPER KEY<br />
+	2. <span class="mark">api_user_name</span> - this is the username of the user you want to login.<br />
+	3. <span class="mark">api_user_password</span> - this is the password of the user you want to login.<br /><br />
+
+	If all 3 values match, a valid user session key will be returned. This key can be used as the <span class="mark">api_user_key</span> paramater. <font color="red">Only one key can be active at the same time for the same user. This key does not expire, unless a new one is generated.</font> We recommend creating just one, then caching that key locally as it does not expire.<br /><br />
+	Below is a PHP example using curl how to create a valid <span class="mark">api_user_key</span>:
+	<div class="code_box" style="overflow:auto">$api_dev_key 		= 'YOUR API DEVELOPER KEY';
+$api_user_name 		= 'a_users_username';
+$api_user_password 	= 'a_users_password';
+$api_user_name 		= urlencode($api_user_name);
+$api_user_password 	= urlencode($api_user_password);
+$url			= 'https://pastebin.com/api/api_login.php';
+$ch			= curl_init($url);
+
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'api_dev_key='.$api_dev_key.'&api_user_name='.$api_user_name.'&api_user_password='.$api_user_password.'');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_VERBOSE, 1);
+curl_setopt($ch, CURLOPT_NOBODY, 0);
+
+$response 		= curl_exec($ch);
+echo $response;
+</div>
+	Possible Good API Responses: (example)
+	<div class="code_box" style="overflow:auto">6c6d3fe13b19bbd6e479b705df0a607f</div>
+	Possible Bad API Responses:
+	<div class="code_box" style="overflow:auto">Bad API request, use POST request, not GET
+Bad API request, invalid api_dev_key
+Bad API request, invalid login
+Bad API request, account not active
+Bad API request, invalid POST parameters</div>
+If you quickly need to create a personal <span class="mark">api_user_key</span>, you can <a href="https://pastebin.com/api/api_user_key.html">use this form to generate one</a>.
+</div>
+<a name="9"></a>
+<div class="content_sub_title">Listing Pastes Created By A User</div>
+<div class="content_text">
+	With this API you can list all the pastes created by a certain user. You will need send a valid POST request to the url below to access the data:
+	<div class="code_box boostit">https://pastebin.com/api/api_post.php</div>
+	Include all the following <span class="mark">POST</span> parameters when you request the url:<br />
+	1. <span class="mark">api_dev_key</span> - this is your API Developer Key, in your case: YOUR API DEVELOPER KEY<br />
+	2. <span class="mark">api_user_key</span> - this is the session key of the logged in user. <a href="/api#7">How to obtain such a key</a><br />
+	3. <span class="mark">api_results_limit</span> - this is not required, by default its set to 50, min value is 1, max value is 1000<br />
+	4. <span class="mark">api_option</span> - set as 'list'<br /><br />
+
+	Below is a PHP example using curl how to list pastes:
+	<div class="code_box" style="overflow:auto">$api_dev_key 		= 'YOUR API DEVELOPER KEY';
+$api_user_key 		= '';
+$api_results_limit 	= '100';
+$url 			= 'https://pastebin.com/api/api_post.php';
+$ch 			= curl_init($url);
+
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'api_option=list&api_user_key='.$api_user_key.'&api_dev_key='.$api_dev_key.'&api_results_limit='.$api_results_limit.'');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_VERBOSE, 1);
+curl_setopt($ch, CURLOPT_NOBODY, 0);
+
+$response  		= curl_exec($ch);
+echo $response;</div>
+
+	Below is an example output of a users paste listing:
+	<div class="code_box" style="overflow:auto">&lt;paste&gt;
+	&lt;paste_key&gt;0b42rwhf&lt;/paste_key&gt;
+	&lt;paste_date&gt;1297953260&lt;/paste_date&gt;
+	&lt;paste_title&gt;javascript test&lt;/paste_title&gt;
+	&lt;paste_size&gt;15&lt;/paste_size&gt;
+	&lt;paste_expire_date&gt;1297956860&lt;/paste_expire_date&gt;
+	&lt;paste_private&gt;0&lt;/paste_private&gt;
+	&lt;paste_format_long&gt;JavaScript&lt;/paste_format_long&gt;
+	&lt;paste_format_short&gt;javascript&lt;/paste_format_short&gt;
+	&lt;paste_url&gt;https://pastebin.com/0b42rwhf&lt;/paste_url&gt;
+	&lt;paste_hits&gt;15&lt;/paste_hits&gt;
+&lt;/paste&gt;
+&lt;paste&gt;
+	&lt;paste_key&gt;0C343n0d&lt;/paste_key&gt;
+	&lt;paste_date&gt;1297694343&lt;/paste_date&gt;
+	&lt;paste_title&gt;Welcome To Pastebin V3&lt;/paste_title&gt;
+	&lt;paste_size&gt;490&lt;/paste_size&gt;
+	&lt;paste_expire_date&gt;0&lt;/paste_expire_date&gt;
+	&lt;paste_private&gt;0&lt;/paste_private&gt;
+	&lt;paste_format_long&gt;None&lt;/paste_format_long&gt;
+	&lt;paste_format_short&gt;text&lt;/paste_format_short&gt;
+	&lt;paste_url&gt;https://pastebin.com/0C343n0d&lt;/paste_url&gt;
+	&lt;paste_hits&gt;65&lt;/paste_hits&gt;
+&lt;/paste&gt;</div>
+	Other Possible Good API Responses: 
+	<div class="code_box" style="overflow:auto">No pastes found.</div>
+	Possible Bad API Responses:
+	<div class="code_box" style="overflow:auto">Bad API request, invalid api_option
+Bad API request, invalid api_dev_key
+Bad API request, invalid api_user_key</div>
+</div>
+
+
+
+<a name="11"></a>
+<div class="content_sub_title">Deleting A Paste Created By A User</div>
+<div class="content_text">
+	With this API you can delete pastes created by certain users. You will need to send a valid POST request to the url below to access the data:
+	<div class="code_box boostit">https://pastebin.com/api/api_post.php</div>
+	Include all the following <span class="mark">POST</span> parameters when you request the url:<br />
+	1. <span class="mark">api_dev_key</span> - this is your API Developer Key, in your case: YOUR API DEVELOPER KEY<br />
+	2. <span class="mark">api_user_key</span> - this is the session key of the logged in user. <a href="/api#7">How to obtain such a key</a><br />
+	3. <span class="mark">api_paste_key</span> - this is the unique key of the paste you want to delete.<br />
+	4. <span class="mark">api_option</span> - set as 'delete'<br /><br />
+
+	Below is a PHP example using curl how to create a valid 'api_user_key':
+	<div class="code_box" style="overflow:auto">$api_dev_key 		= 'YOUR API DEVELOPER KEY';
+$api_user_key 		= '';
+$api_paste_key 		= '';
+$url 			= 'https://pastebin.com/api/api_post.php';
+$ch 			= curl_init($url);
+
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'api_option=delete&api_user_key='.$api_user_key.'&api_dev_key='.$api_dev_key.'&api_paste_key='.$api_paste_key.'');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_VERBOSE, 1);
+curl_setopt($ch, CURLOPT_NOBODY, 0);
+
+$response  		= curl_exec($ch);
+echo $response;</div>
+	Possible Good API Responses: 
+	<div class="code_box" style="overflow:auto">Paste Removed</div>
+	Possible Bad API Responses:
+	<div class="code_box" style="overflow:auto">Bad API request, invalid api_option
+Bad API request, invalid api_dev_key
+Bad API request, invalid api_user_key
+Bad API request, invalid permission to remove paste</div>
+</div>
+<a name="12"></a>
+<div class="content_sub_title">Getting A Users Information And Settings</div>
+<div class="content_text">
+	With this API you can obtain a users personal information and certain settings. You will need to send a valid POST request to the url below to access the data:
+	<div class="code_box boostit">https://pastebin.com/api/api_post.php</div>
+	Include all the following <span class="mark">POST</span> parameters when you request the url:<br />
+	1. <span class="mark">api_dev_key</span> - this is your API Developer Key, in your case: YOUR API DEVELOPER KEY<br />
+	2. <span class="mark">api_user_key</span> - this is the session key of the logged in user. <a href="/api#7">How to obtain such a key</a><br />
+	3. <span class="mark">api_option</span> - set as 'userdetails'<br /><br />
+
+	Below is a PHP example using curl how to create a valid 'api_user_key':
+	<div class="code_box" style="overflow:auto">$api_dev_key 		= 'YOUR API DEVELOPER KEY';
+$api_user_key 		= '';
+$url 			= 'https://pastebin.com/api/api_post.php';
+$ch 			= curl_init($url);
+
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'api_option=userdetails&api_user_key='.$api_user_key.'&api_dev_key='.$api_dev_key.'');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_VERBOSE, 1);
+curl_setopt($ch, CURLOPT_NOBODY, 0);
+
+$response  		= curl_exec($ch);
+echo $response;</div>
+
+
+	Below is an example output of a user information listing:
+	<div class="code_box" style="overflow:auto">&lt;user&gt;
+	&lt;user_name&gt;wiz_kitty&lt;/user_name&gt;
+	&lt;user_format_short&gt;text&lt;/user_format_short&gt;
+	&lt;user_expiration&gt;N&lt;/user_expiration&gt;
+	&lt;user_avatar_url&gt;https://pastebin.com/cache/a/1.jpg&lt;/user_avatar_url&gt;
+	&lt;user_private&gt;1&lt;/user_private&gt; (0 Public, 1 Unlisted, 2 Private)
+	&lt;user_website&gt;https://myawesomesite.com&lt;/user_website&gt;
+	&lt;user_email&gt;oh@dear.com&lt;/user_email&gt;
+	&lt;user_location&gt;New York&lt;/user_location&gt;
+	&lt;user_account_type&gt;1&lt;/user_account_type&gt; (0 normal, 1 PRO)
+&lt;/user&gt;</div>
+	Possible Bad API Responses:
+	<div class="code_box" style="overflow:auto">Bad API request, invalid api_option
+Bad API request, invalid api_dev_key
+Bad API request, invalid api_user_key</div>
+</div>
+<a name="13"></a>
+<div class="content_sub_title">Getting raw paste output of users pastes including 'private' pastes</div>
+<div class="content_text">
+	With this API you can obtain the raw paste output of a users pastes, including private pastes:
+	<div class="code_box boostit">https://pastebin.com/api/api_raw.php</div>
+	Include all the following <span class="mark">POST</span> parameters when you request the url:<br />
+	1. <span class="mark">api_dev_key</span> - this is your API Developer Key, in your case: YOUR API DEVELOPER KEY<br />
+	2. <span class="mark">api_user_key</span> - this is the session key of the logged in user. <a href="/api#7">How to obtain such a key</a><br />
+	3. <span class="mark">api_paste_key</span> - this is paste key you want to fetch the data from.<br />
+	4. <span class="mark">api_option</span> - set as 'show_paste'<br /><br />
+
+	Below is a PHP example using curl how to fetch a users raw paste output:
+	<div class="code_box" style="overflow:auto">$api_dev_key 		= 'YOUR API DEVELOPER KEY';
+$api_user_key 		= '';
+$url 			= 'https://pastebin.com/api/api_raw.php';
+$ch 			= curl_init($url);
+
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'api_option=show_paste&api_user_key='.$api_user_key.'&api_dev_key='.$api_dev_key.'&api_paste_key=A_VALID_PASTE_KEY_HERE');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_VERBOSE, 1);
+curl_setopt($ch, CURLOPT_NOBODY, 0);
+
+$response  		= curl_exec($ch);
+echo $response;</div>
+	Possible Bad API Responses:
+	<div class="code_box" style="overflow:auto">Bad API request, invalid api_option
+Bad API request, invalid api_dev_key
+Bad API request, invalid api_user_key
+Bad API request, invalid permission to view this paste or invalid api_paste_key</div>
+</div>
+<a name="14"></a>
+<div class="content_sub_title">Getting raw paste output of any 'public' &amp; 'unlisted' pastes</div>
+<div class="content_text">This option is actually not part of our API, but you might still want to use it. To get the raw output of any public or unlisted paste you can use our raw data output url: 
+<div class="code_box boostit">https://pastebin.com/raw/</div> 
+Simply add the <span class="mark">paste_key</span> at the end of that url and you will get the raw output.
+
+<div id="notice"><b>TIP:</b> If you are trying to scrape our content, check out <a href="/doc_scraping_api">our scraping API</a>.</div>
+</div>
+     
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$(".close1").click(function(){return $("#float-box-1").hide(),createCookie("l2c_1",!0,90),!1});
+		$(".cookie_button").click(function(){return $("#float-box-1").hide(),createCookie("l2c_1",!0,90),!1});		
+		$(".close2").click(function(){return $("#float-box-2").hide(),createCookie("l2c_2",!0,14),!1});
+		$(".close3").click(function(){return $("#float-box-3").hide(),createCookie("l2c_2",!0,14),!1});
+		$(".close4").click(function(){return $("#float-box-4").hide(),createCookie("l2c_4",!0,7),!1});
+	});	
+	</script>
+	<div id="float-box-frame">		
+		<div id="float-box-1">
+			We use cookies for various purposes including analytics. By continuing to use Pastebin, you agree to our use of cookies as described in the <a href="/doc_cookies_policy">Cookies Policy</a>. <span class="cookie_button">OK, I Understand</span>
+		</div>
+		<div id="float-box-3">
+			<style>
+				#pro_promo_text{color:#333;float:right;display:block;font-size:14px;font-weight:400;width:270px}					
+				#pro_promo_img {background: #fff;width: 60px;height: 50px;float: left;}
+			</style>			
+			<div id="pro_promo_img"><a href="/signup"><img src="/i/hello.png" alt="" border="0" style="width:48px;height:48px;" /></a></div> 
+			<div id="pro_promo_text">Not a member of Pastebin yet?<br /><a href="/signup" style="text-decoration: underline dotted"><b>Sign Up</b></a>, it unlocks many cool features!</div>
+			<div class="close3" title="Close Me">&nbsp;</div>
+		</div></div>						</div>
+					</div>
+				</div>
+			</div>
+			<div id="mid_footer">
+				<a href="/tools#chrome" title="Google Chrome Extension"><img src="/i/t.gif" alt="" class="icon24 chrome" /></a>
+				<a href="/tools#firefox" title="Firefox Extension"><img src="/i/t.gif" alt="" class="icon24 firefox" /></a>
+				<a href="/tools#iphone" title="iPhone/iPad Application"><img src="/i/t.gif" alt="" class="icon24 iphone" /></a>
+				<a href="/tools#windows" title="Windows Desktop Application"><img src="/i/t.gif" alt="" class="icon24 windows" /></a>
+				<a href="/tools#android" title="Android Application"><img src="/i/t.gif" alt="" class="icon24 android" /></a>
+				<a href="/tools#macos" title="MacOS X Widget"><img src="/i/t.gif" alt="" class="icon24 macos" /></a>
+				<a href="/tools#opera" title="Opera Extension"><img src="/i/t.gif" alt="" class="icon24 opera" /></a>
+				<a href="/tools#pastebincl" title="Linux Application"><img src="/i/t.gif" alt="" class="icon24 unix" /></a>
+			</div> 
+		</div>
+		<div id="footer">
+			<div id="footer_links">
+				<a href="/">create new paste</a> &nbsp;/&nbsp; 
+				<a href="https://deals.pastebin.com">deals</a><sup style="color:red">new!</sup> &nbsp;/&nbsp; 
+				<a href="/languages">syntax languages</a> &nbsp;/&nbsp; 
+				<a href="/archive">archive</a> &nbsp;/&nbsp; 
+				<a href="/faq">faq</a> &nbsp;/&nbsp; 
+				<a href="/tools">tools</a> &nbsp;/&nbsp; 
+				<a href="/night_mode">night mode</a> &nbsp;/&nbsp;
+                <a href="/api">api</a>&nbsp;/&nbsp;
+                <a href="/doc_scraping_api">scraping api</a>
+
+				<br />
+				<a href="/doc_privacy_statement">privacy statement</a> &nbsp;/&nbsp; 
+				<a href="/doc_cookies_policy">cookies policy</a> &nbsp;/&nbsp; 
+				<a href="/doc_terms_of_service">terms of service</a> &nbsp;/&nbsp; 
+				<a href="/doc_security_disclosure">security disclosure</a> &nbsp;/&nbsp; 
+				<a href="/dmca">dmca</a> &nbsp;/&nbsp; 
+				<a href="/report_abuse">report abuse</a> &nbsp;/&nbsp;
+				<a href="/contact">contact</a>
+				<br /><br />
+				<span class="h_800">
+					By using Pastebin.com you agree to our <a href="/doc_cookies_policy">cookies policy</a> to enhance your experience.
+					<br />
+					Site design &amp; logo &copy; 2020 Pastebin; user contributions (pastes) licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="nofollow">cc by-sa 3.0</a>
+				</span>
+				<a href="http://steadfast.net/services/dedicated-servers.php?utm_source=pastebin.com&amp;utm_medium=referral&amp;utm_content=footer_link_dedicated_server_hosting_by&amp;utm_campaign=referral_20140118_x_x_pastebin_partner&amp;source=referral_20140118_x_x_pastebin_partner" rel="nofollow" target="_blank">Dedicated Server Hosting</a> by <a href="http://steadfast.net/?utm_source=pastebin.com&amp;utm_medium=referral&amp;utm_content=footer_link_steadfast&amp;utm_campaign=referral_20140118_x_x_pastebin_partner&amp;source=referral_20140118_x_x_pastebin_partner" rel="nofollow" target="_blank">Steadfast</a>
+			</div>
+			<div id="footer_right" class="h_1024">
+			
+				<a href="https://facebook.com/pastebin" rel="nofollow" title="Like us on Facebook" target="_blank"><img src="/i/t.gif" alt="" class="icon40 facebook_circle" /></a>
+				<a href="https://twitter.com/pastebin" rel="nofollow" title="Follow us on Twitter" target="_blank"><img src="/i/t.gif" alt="" class="icon40 twitter_circle" /></a>
+							</div>
+		</div>
+		<script type="text/javascript">
+			function isIE(){var e=navigator.userAgent.toLowerCase();return-1!=e.indexOf("msie")?parseInt(e.split("msie")[1]):!1}if(isIE()&&isIE()<10){var div=document.getElementById("ie_msg");div.innerHTML=div.innerHTML+'<div id="old_browser">Your browser is outdated and insecure! Pastebin does not offer support for your browser. <a href="http://outdatedbrowser.com/" target="_blank" rel="nofollow">Click here to update your browser</a>!</div>'}
+		</script>
+		<div class="pub_300x250"></div><a href="#0" class="cd-top">Top</a>
+
+
+
+	</body>
+</html>	
